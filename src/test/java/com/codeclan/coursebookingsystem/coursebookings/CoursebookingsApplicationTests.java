@@ -56,7 +56,7 @@ public class CoursebookingsApplicationTests {
 		Course course = new Course("Learn Python", "Glasgow", 4);
 		courseRepository.save(course);
 
-		Booking booking = new Booking(course, customer, "21/02/19");
+		Booking booking = new Booking(course, customer, "21-02-19");
 		bookingRepository.save(booking);
 
 		assertEquals(5, bookingRepository.count());
@@ -71,7 +71,7 @@ public class CoursebookingsApplicationTests {
 
 	@Test
 	public void canFindBookingByDate() {
-		List<Booking> result = bookingRepository.findBookingByDate("19/03/19");
+		List<Booking> result = bookingRepository.findBookingByDate("19-03-19");
 		assertEquals(2, result.size());
 	}
 }
