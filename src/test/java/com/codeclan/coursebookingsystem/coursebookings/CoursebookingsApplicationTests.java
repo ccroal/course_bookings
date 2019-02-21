@@ -11,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -73,5 +72,29 @@ public class CoursebookingsApplicationTests {
 	public void canFindBookingByDate() {
 		List<Booking> result = bookingRepository.findBookingByDate("19-03-19");
 		assertEquals(2, result.size());
+	}
+
+	@Test
+	public void canFindCustomersForCourse() {
+		List<Customer> result = customerRepository.findCustomersForCourse(2L);
+		assertEquals(2, result.size());
+ 	}
+
+	@Test
+	public void canFindCoursesForCustomer() {
+		List<Course> result = courseRepository.findCoursesByCustomer(1L);
+		assertEquals(2, result.size());
+	}
+
+	@Test
+	public void canFindCustomersInCourseByTown() {
+		List<Customer> result = customerRepository.findCustomerTownByCourse(1L, "Glasgow");
+		assertEquals(2, result.size());
+	}
+
+	@Test
+	public void canFindCustomersInCourseByTownOverAge() {
+		List<Customer> result = customerRepository.findCustomersInTownOverAgeByCourse(1L, "Glasgow", 25);
+		assertEquals(1, result.size());
 	}
 }

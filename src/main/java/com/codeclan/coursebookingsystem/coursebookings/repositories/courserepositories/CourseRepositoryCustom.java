@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface CourseRepositoryCustom {
 
-    List<Course> findCourseByRating(int rating);
+
+
+    List<Course> findCoursesByCustomer(Long id);
 }
